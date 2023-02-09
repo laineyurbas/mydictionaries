@@ -32,22 +32,29 @@ import json
 # ## Part 1
 infile = open("eq_data.json", "r")
 file2 = json.load(infile)
-# list1 = file2["features"]
-# for value in list1:
-# if value["properties"]["type"] == "earthquake":
-#    eqk = value["properties"]["type"]
+
 eqk = file2["features"]
 print(len(eqk))
-# #
 
 
 ## part 2
+
+
 eq_dict = {}
 for earthquake in eqk:
     if earthquake["properties"]["mag"] > 6:
-        eq_dict["features"] = earthquake
+        eq_dict[earthquake["properties"]["place"]] = {
+            "magnitude": earthquake["properties"]["mag"],
+            "longitude": earthquake["geometry"]["coordinates"][0],
+            "latitude": earthquake["geometry"]["coordinates"][1],
+        }
 print(f"eq_dict: {eq_dict}\n")
 
 
-# eq_dict = {}
-# eq_dict['features']= if ['properties']['mag'] > 6
+## part 3
+for k, v in eq_dict.items():
+    print(f"Location: {k}")
+    print(f"Magnitude: {v['magnitude']}")
+    print(f"Longitude: {v['longitude']}")
+    print(f"Lattitude: {v['latitude']}")
+    print("\n")
