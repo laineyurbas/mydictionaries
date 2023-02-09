@@ -10,10 +10,18 @@ print(person)
 
 # print out the name of the second child
 print(person["children"][1])
+print()
 # print out the name of the cat
 print(person["pets"]["cat"])
+print()
 # iterate through all children and print out each child
-
-
+for child in person["children"]:
+    print(child)
+print()
 # print out the pets in this format
 # type of pet: dog name of pet: Fido
+for k, v in person["pets"].items():
+    print(f"type of pet: {k} name of pet: {v}")
+
+print()
+print()

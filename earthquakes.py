@@ -36,12 +36,14 @@ file2 = json.load(infile)
 eqk = file2["features"]
 print(len(eqk))
 
-
+print()
 ## part 2
 
-
 eq_dict = {}
+
 for earthquake in eqk:
+    # location = [earthquake["properties"]["place"]]
+
     if earthquake["properties"]["mag"] > 6:
         eq_dict[earthquake["properties"]["place"]] = {
             "magnitude": earthquake["properties"]["mag"],
@@ -49,8 +51,7 @@ for earthquake in eqk:
             "latitude": earthquake["geometry"]["coordinates"][1],
         }
 print(f"eq_dict: {eq_dict}\n")
-
-
+print()
 ## part 3
 for k, v in eq_dict.items():
     print(f"Location: {k}")
